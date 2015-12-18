@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+.navbar.navbar-default {
+  border-radius: 0;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
+  box-shadow: 0px 1px 3px #2a2a2a;
+  background: url('dark_wood.png');
+  border: none;
+}
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 100;
+  color: white;
+}
+.hero {
+  background: url('hero.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 370px;
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+.frosty {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+.frosty h1 {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 100;
+  text-shadow: rgba(0,0,0,0.95) 1px, 1px;
+}
+.frosty h2 {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
+  text-shadow: rgba(0,0,0,0.95) 1px 1px;
+}
+.btn {
+  border-radius: 0;
+}
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin: 0;
+}
