@@ -7,7 +7,14 @@
   background: url('dark_wood.png');
   border: none;
 }
-.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:visited {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #777;
+}
+.navbar-default .navbar-brand {
   font-family: 'Kaushan Script', cursive;
   font-weight: 100;
   color: white;
@@ -37,6 +44,20 @@
 }
 .btn {
   border-radius: 0;
+}
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding: 20px;
+  background: #fff;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.booyah-box h2, .booyah-box h1 {
+  margin: 10px;
 }
 body {
   background: url('brushed.png');
