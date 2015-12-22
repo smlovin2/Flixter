@@ -25,4 +25,44 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
 
     assert_equal 1, user.courses.count
   end
+
+  test "create invalid no title" do
+    user = FactoryGirl.create(:user)
+    sign_in user
+
+    assert_no_difference 'Course.count' do
+      post :create, :course => {
+        :title => '',
+        :description => 'It\'s fun!',
+        :cost => 250.00
+      }
+    end
+  end
+
+  test "create invalid no description" do
+    user = FactoryGirl.create(:user)
+    sign_in user
+
+    assert_no_difference 'Course.count' do
+      post :create, :course => {
+        :title => 'Awesomesauce',
+        :description => '',
+        :cost => 250.00
+      }
+    end
+  end
+
+  test "create invalid negative cost" do
+    user = FactoryGirl.create(:user)
+    sign_in user
+
+    assert_no_difference 'Course.count' do
+      post :create, :course => {
+        :title => '',
+        :description => 'It\'s fun!',
+        :cost => -100.00
+      }
+    end
+  end
+  
 end
