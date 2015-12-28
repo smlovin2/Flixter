@@ -1,7 +1,15 @@
 require 'test_helper'
 
 class CoursesControllerTest < ActionController::TestCase
-  test "List all courses" do
-    assert true
+  test "index" do
+    FactoryGirl.create(:course)
+    get :index
+    assert_response :success
+  end
+
+  test "show" do
+    course = FactoryGirl.create(:course)
+    get :show, :id => course.id
+    assert_response :success
   end
 end
