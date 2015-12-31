@@ -92,18 +92,4 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
       }
     end
   end
-
-  test "create wrong user signed in" do
-    user = FactoryGirl.create(:user)
-    sign_in user
-
-      post :create, :course => {
-        :title => 'The Course',
-        :description => 'It\'s fun!',
-        :cost => 100.00
-      }
-
-      assert_response :unauthorized
-  end
-
 end
