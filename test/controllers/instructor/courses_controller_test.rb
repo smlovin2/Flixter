@@ -32,10 +32,8 @@ class Instructor::CoursesControllerTest < ActionController::TestCase
   end
 
   test "show signed in as correct user" do
-    user = FactoryGirl.create(:user)
-    sign_in user
-
-    course = FactoryGirl.create(:course, :user => user)
+    course = FactoryGirl.create(:course)
+    sign_in course.user
 
     get :show, :id => course.id
     assert_response :success
