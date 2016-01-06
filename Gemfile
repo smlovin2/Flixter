@@ -42,6 +42,7 @@ gem 'figaro'
 gem 'mini_magick', '~> 4.3.1'
 gem 'carrierwave-aws'
 gem 'stripe'
+gem 'ranked-model'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
