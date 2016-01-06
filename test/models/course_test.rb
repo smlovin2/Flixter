@@ -20,4 +20,15 @@ class CourseTest < ActiveSupport::TestCase
     course = FactoryGirl.create(:course, cost: 100)
     assert_equal 102.5, course.taxed_cost(2.5)
   end
+  
+  test "Course is free" do
+    course = FactoryGirl.create(:course, cost: 0)
+    assert_equal true, course.free?
+  end
+  
+  test "Course is premium" do
+    course = FactoryGirl.create(:course, cost: 100)
+    assert_equal true, course.premium?
+  end
+  
 end

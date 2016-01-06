@@ -18,7 +18,7 @@ class EnrollmentsControllerTest < ActionController::TestCase
         :user_id => course.user.id
       }
       
-      assert_redirected_to course_path(course)
+      assert_redirected_to root_path
     end
   end
 end
