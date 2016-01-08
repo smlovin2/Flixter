@@ -9,12 +9,6 @@
     <span class="label label-default">
       <%= number_to_currency @course.cost %>
     </span>
-
-    <% if current_user && current_user == @course.user %>
-      <br />
-      <br />
-      <%= link_to 'Administer', instructor_course_path(@course), :class => 'btn btn-danger btn-large' %>
-    <% end %>
     
     <br />
     <br />
@@ -38,7 +32,15 @@
 
   <div class="col-sm-8 col-xs-12">
     <%= @course.description %>
+    <% if current_user && current_user == @course.user %>
+      <br />
+      <br />
+      <%= link_to 'Administer', instructor_course_path(@course), :class => 'btn btn-danger btn-large pull-right' %>
+    <% end %>
   </div>
+  
+  <br class="clr" />
+  <hr />
 
   <div class="col-xs-12">
     <% @course.sections.rank(:row_order).each do |section| %>
