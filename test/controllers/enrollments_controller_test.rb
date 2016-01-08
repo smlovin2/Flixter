@@ -8,8 +8,8 @@ class EnrollmentsControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
   
-  test "create" do
-    course = FactoryGirl.create(:course)
+  test "free course" do
+    course = FactoryGirl.create(:course, :cost => 0.00)
     sign_in course.user
     
     assert_difference 'Enrollment.count' do
@@ -18,7 +18,21 @@ class EnrollmentsControllerTest < ActionController::TestCase
         :user_id => course.user.id
       }
       
-      assert_redirected_to root_path
+      assert_redirected_to course_path(course)
+    end
+  end
+  
+  test "free course" do
+    course = FactoryGirl.create(:course, :cost => 0.00)
+    sign_in course.user
+    
+    assert_difference 'Enrollment.count' do
+      post :create, :course_id => course.id, :enrollment => {
+        :course_id => course.id,
+        :user_id => course.user.id
+      }
+      
+      assert_redirected_to course_path(course)
     end
   end
 end
