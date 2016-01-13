@@ -18,16 +18,18 @@ class Instructor::SectionsControllerTest < ActionController::TestCase
     assert_equal 1, course.sections.count
   end
 
-  test "create wrong user" do
-    user1 = FactoryGirl.create(:user)
-    sign_in user1
-
+  test "update" do
     course = FactoryGirl.create(:course)
+    sign_in course.user
 
-    post :create, :course_id => course.id, :section => {
-      :title => 'Section 1',
+    section = FactoryGirl.create(:section, :course => course)
+
+    put :update, :id => section.id, :section => {
+      :title => 'Section 3',
     }
 
-    assert_response :unauthorized
+    assert_response :success
+    section.reload
+    assert_equal("Section 3", section.title)
   end
 end
