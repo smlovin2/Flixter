@@ -1,33 +1,6 @@
 require 'test_helper'
 
 class Instructor::LessonsControllerTest < ActionController::TestCase
-  test "new" do
-    user = FactoryGirl.create(:user)
-    sign_in user
-
-    course = FactoryGirl.create(:course, :user => user)
-    section = FactoryGirl.create(:section, :course => course)
-    get :new, :section_id => section.id
-    assert_response :success
-  end
-
-  test "new not signed in" do
-    section = FactoryGirl.create(:section)
-    get :new, :section_id => section.id
-    assert_redirected_to new_user_session_path
-  end
-
-  test "new wrong user" do
-    user1 = FactoryGirl.create(:user)
-    sign_in user1
-
-    section = FactoryGirl.create(:section)
-
-    get :new, :section_id => section.id
-
-    assert_response :unauthorized
-  end
-
   test "create" do
     user = FactoryGirl.create(:user)
     sign_in user
@@ -46,17 +19,19 @@ class Instructor::LessonsControllerTest < ActionController::TestCase
     assert_equal 1, section.lessons.count
   end
 
-  test "create wrong user" do
-    user1 = FactoryGirl.create(:user)
-    sign_in user1
+  test "update" do
+    course = FactoryGirl.create(:course)
+    sign_in course.user
 
-    section = FactoryGirl.create(:section)
+    section = FactoryGirl.create(:section, :course => course)
+    lesson = FactoryGirl.create(:lesson, :section => section)
 
-    post :create, :section_id => section.id, :lesson => {
-      :title => 'Lesson 1',
-      :subtitle => 'The first lesson',
+    put :update, :id => lesson.id, :lesson => {
+      :title => 'Lesson 3',
     }
 
-    assert_response :unauthorized
+    assert_response :success
+    lesson.reload
+    assert_equal("Lesson 3", lesson.title)
   end
 end

@@ -6,20 +6,20 @@ class Instructor::LessonsController < ApplicationController
     @lesson = current_section.lessons.create(lesson_params)
     redirect_to instructor_course_path(current_section.course)
   end
-  
+
   def update
     current_lesson.update_attributes(lesson_params)
     render :text => 'updated!'
   end
 
   private
-  
+
   def require_authorized_for_current_lesson
     if current_lesson.section.course.user != current_user
       render :text => 'Unauthorized', :status => :unauthorized
     end
   end
-  
+
   def current_lesson
     @current_lesson ||= Lesson.find(params[:id])
   end
